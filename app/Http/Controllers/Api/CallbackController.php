@@ -11,7 +11,8 @@ class CallbackController extends Controller
 {
     public function callback() {
         $callback = new CallbackService();
-        if ($callback->isSignatureKeyVerified()) {
+        // if ($callback->isSignatureKeyVerified())
+        {
             $notification = $callback->getNotification();
             $order = $callback->getOrder();
 
@@ -37,11 +38,11 @@ class CallbackController extends Controller
                 'success' => true,
                 'message'=> 'Notification successfully processed.',
             ]);
-        } else {
-            return response()->json([
-                'error' => true,
-                'message' => 'Invalid signature key.',
-            ],403 );
+        // } else {
+        //     return response()->json([
+        //         'error' => true,
+        //         'message' => 'Invalid signature key.',
+        //     ],403 );
         }
     }
 }
