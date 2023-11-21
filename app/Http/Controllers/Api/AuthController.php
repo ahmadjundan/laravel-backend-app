@@ -17,6 +17,7 @@ class AuthController extends Controller
             'email' => 'required|string|email',
             'password' => 'required',
         ]);
+
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {
@@ -45,13 +46,14 @@ class AuthController extends Controller
             'email' => 'required|string|email',
             'password' => 'required',
         ]);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password'=> Hash::make($request->password),
-            'roles' => 'user'
-
+            'roles' => 'user',
         ]);
+
 
         $token = $user->createToken('token-api')->plainTextToken;
         return response()->json([
