@@ -24,16 +24,10 @@ class CreateSnapTokenService extends Midtrans
             ],
             'item_details' => [
                 [
-                    'id' => 1,
-                    'price' => '150000',
-                    'quantity' => 1,
-                    'name' => 'Flashdisk Toshiba 32GB',
-                ],
-                [
-                    'id' => 2,
-                    'price' => '60000',
-                    'quantity' => 2,
-                    'name' => 'Memory Card VGEN 4GB',
+                    'id' => $this->order->orderItems[0]->product->id,
+                    'price' => $this->order->orderItems[0]->product->price,
+                    'quantity' => $this->order->orderItems[0]->quantity,
+                    'name' => $this->order->orderItems[0]->product->name,
                 ],
             ],
             'customer_details' => [
